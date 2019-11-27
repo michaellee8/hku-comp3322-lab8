@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lab 7</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="/javascripts/externalJS.js"></script>
+</head>
+<body ng-app="contactList" ng-controller="contactListController">
+<h1>Lab 7</h1>
+<p>Welcome to lab 7.</p>
+
+<div id="wrapper">
+  <div id="contactInfo">
+    <h2>Contact Info</h2>
+    <table>
+      <thead>
+      <tr>
+        <td>Name:</td>
+        <td><input id='contactInfoName' readonly ng-model="selected_contact.name"></input></td>
+      </tr>
+      <tr>
+        <td>Telephone:</td>
+        <td><input id='contactInfoTel' readonly ng-model="selected_contact.tel"></input></td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><input id='contactInfoEmail' readonly ng-model="selected_contact.email"></input></td>
+      </tr>
+      </thead>
+    </table>
+  </div>
+
+  <h2>Contact List</h2>
+
+  <div id="contactList" ng-init="getContacts()">
+    <table>
+      <thead>
+      <th>Name <span> <a id='sort' ng-click="sortList()">sort</a> </span></th>
+      <th>Delete?</th>
+      </thead>
+
+      <tbody>
+      <tr ng-repeat="contact in contacts">
+        <td><a href="" ng-click="showContact(contact)">{{contact.name}}</a></td>
+        <td><a href="" ng-click="deleteContact(contact._id)">delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Add/Update Contact</h2>
+
+  <div id="addOrUpdateContact">
+    <fieldset>
+      <input type="text" placeholder="Name" ng-model="new_contact.name"><br>
+      <input type="text" placeholder="Telephone Number" ng-model="new_contact.tel"><br>
+      <input type="text" placeholder="Email" ng-model="new_contact.email"><br>
+      <button class="myButton" ng-click="addOrUpdateContact(new_contact)">
+        Add/Update Contact
+      </button>
+    </fieldset>
+  </div>
+</div>
+
+</body>
+</html>
